@@ -19,18 +19,14 @@ def homepage(request):
 def detail(request, slug):
     template = get_template('myblog/post.html')
 
-    post = Post.objects.get(slug=slug)
-    if post != None:
-        html = template.render(locals())
-        return HttpResponse(html)
-    # try:
-    #     post = Post.object.get(sulg=slug)
-    #     if post != None:
-    #         html = template.render(locals())
-    #         return HttpResponse(html)
-    #
-    # except:
-    #     return redirect('/')
+    try:
+        post = Post.objects.get(slug=slug)
+        if post != None:
+            html = template.render(locals())
+            return HttpResponse(html)
+
+    except:
+        return redirect('/myblog')
 
 
 
