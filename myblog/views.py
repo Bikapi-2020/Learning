@@ -18,7 +18,7 @@ def homepage(request):
 
 def detail(request, slug):
     template = get_template('myblog/post.html')
-
+    now = datetime.now()
     try:
         post = Post.objects.get(slug=slug)
         if post != None:
